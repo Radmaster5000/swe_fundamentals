@@ -34,7 +34,7 @@ class ProjectTests(unittest.TestCase):
         self.assertEqual('2022-05-02', project.last_modified)
         self.assertEqual(['Python'], project.languages)
         self.assertEqual(['Phil'], project.contributors)
-        self.assertEqual('github.com/radmaster5000', project.link)
+        self.assertEqual('http://www.github.com/radmaster5000', project.link)
 
     def test_create_project_missing_name(self):
         # Assert
@@ -47,6 +47,18 @@ class ProjectTests(unittest.TestCase):
         with self.assertRaises(ProjectNameError) as context:
             project = Project('Supercalofragelisticexpiali-project', 0.1, 'Develop data storage app', '2022-05-01', '2022-05-02', ['Python'], ['Phil'], 'github.com/radmaster5000' )
         self.assertEqual('Project name must be between 1 and 10 characters', str(context.exception))
+
+    def test_create_project_version_integer(self):
+        # Assert
+        with self.assertRaises(ProjectVersionError) as context:
+            project = Project('Alpha', 1, 'test version', '2022-05-01', '2022-05-02', ['Python'], ['Phil'], 'github.com/radmaster5000')
+        self.assertEqual('Version must be of type: float', str(context.exception))
+
+    def test_create_project_long_description(self):
+        # Assert
+        with self.assertRaises(ProjectDescriptionError) as context:
+            project = Project('Alpha', 0.1, 'Develop data storage appDevelop data storage appDevelop data storage appDevelop data storage appDevelop data storage appDevelop data storage appDevelop data storage app', '2022-05-01', '2022-05-02', ['Python'], ['Phil'], 'github.com/radmaster5000' )
+        self.assertEqual('Description must be less than 150 chars', str(context.exception))
 
 
 if __name__ == '__main__':

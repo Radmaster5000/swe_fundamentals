@@ -20,3 +20,24 @@ class ProjectVersionError(ProjectError):
 
 class ProjectDescriptionError(ProjectError):
     pass
+
+
+class ProjectStartDateError(ProjectError):
+    pass
+
+
+class ProjectLastModifiedError(ProjectError):
+    pass
+
+
+class ProjectLanguagesError(ProjectError):
+    pass
+
+
+class ProjectContributorsError(ProjectError):
+    pass
+
+
+class ProjectLinkError(ProjectError):
+    pass
+
