@@ -1,5 +1,18 @@
+from ProjectManager import ProjectManager
+from Project import Project
+from UIController import add_project, display_projects, quit_app
+
+#import pandas as pd
+
 from Exceptions import *
-# Load data
+# from Help import help
+# # Load data
+# test_dataframe = pd.read_csv('test_data.csv')
+# print(test_dataframe)
+
+
+# Setup
+new_project_manager = ProjectManager()
 
 # Launch UI
 def main_menu():
@@ -12,7 +25,8 @@ def main_menu():
         2 = Remove a project
         3 = Update a project
         4 = Display a project
-        5 = Quit
+        5 = Help
+        6 = Quit
         
         """)
 
@@ -22,26 +36,32 @@ def main_menu():
             pass
 
         if selection == 1:
-            print("create_record()")
+            add_project(new_project_manager)
+            # REFACTORED OUT TO A FUNCTION IN A UICONTROLLER MODULE
+            # new_project = Project()
+            # add_project = new_project.create_project()
+            # print("project created..")
+            # new_project_manager.add(add_project)
+            # print("project added to project manager..")
+
         elif selection == 2:
             print("remove_record()")
         elif selection == 3:
             print("update_record()")
         elif selection == 4:
-            print("display_record()")
+            display_projects(new_project_manager)
+            # REFACTORED OUT TO A FUNCTION IN A UICONTROLLER MODULE
+            # for i in new_project_manager.projects:
+            #     print(i)
         elif selection == 5:
+            help()
+        elif selection == 6:
             selection = quit_app()
         else:
             print("Invalid selection")
 
 
-def quit_app():
-    confirm = input("Are you sure you want to quit?").lower()
-    if confirm == 'y':
-        print("Save file?")
-        quit()
-    else:
-        return 0
+
 
 
 if __name__ == '__main__':

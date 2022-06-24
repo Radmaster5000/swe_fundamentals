@@ -18,6 +18,11 @@ class ProjectVersionError(ProjectError):
     pass
 
 
+class ProjectManagerError(Exception):
+    pass
+
+
+
 class ProjectDescriptionError(ProjectError):
     pass
 
