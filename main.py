@@ -2,14 +2,15 @@ from ProjectManager import ProjectManager
 from Project import Project
 from UIController import add_project, display_projects, quit_app
 
-#import pandas as pd
+import pandas as pd
 
 from Exceptions import *
-# from Help import help
+from Help import help
 # # Load data
 # test_dataframe = pd.read_csv('test_data.csv')
 # print(test_dataframe)
-
+new_dataframe = pd.DataFrame(columns=['Name', 'Version', 'Description', 'Start Date', 'Last Modified', 'Languages used',
+                                      'Contributors', 'Link'])
 
 # Setup
 new_project_manager = ProjectManager()
@@ -36,7 +37,7 @@ def main_menu():
             pass
 
         if selection == 1:
-            add_project(new_project_manager)
+            add_project(new_project_manager, new_dataframe)
             # REFACTORED OUT TO A FUNCTION IN A UICONTROLLER MODULE
             # new_project = Project()
             # add_project = new_project.create_project()
@@ -49,7 +50,7 @@ def main_menu():
         elif selection == 3:
             print("update_record()")
         elif selection == 4:
-            display_projects(new_project_manager)
+            display_projects(new_project_manager, new_dataframe)
             # REFACTORED OUT TO A FUNCTION IN A UICONTROLLER MODULE
             # for i in new_project_manager.projects:
             #     print(i)

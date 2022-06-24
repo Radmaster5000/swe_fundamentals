@@ -22,7 +22,7 @@ class ProjectManager:
             self._projects.remove(project)
 
     @property
-    def number_of_cars(self):
+    def number_of_projects(self):
         return len(self._projects)
 
     def clear(self):
