@@ -2,15 +2,14 @@ from ProjectManager import ProjectManager
 from Project import Project
 from UIController import add_project, display_projects, quit_app
 
-import pandas as pd
+
 
 from Exceptions import *
 from Help import help
 # # Load data
 # test_dataframe = pd.read_csv('test_data.csv')
 # print(test_dataframe)
-new_dataframe = pd.DataFrame(columns=['Name', 'Version', 'Description', 'Start Date', 'Last Modified', 'Languages used',
-                                      'Contributors', 'Link'])
+
 
 # Setup
 new_project_manager = ProjectManager()
@@ -18,7 +17,7 @@ new_project_manager = ProjectManager()
 # Launch UI
 def main_menu():
     selection = 0
-    while selection != 5:
+    while selection != 7:
         selection = input("""
         
         Please select an option:
@@ -26,8 +25,9 @@ def main_menu():
         2 = Remove a project
         3 = Update a project
         4 = Display a project
-        5 = Help
-        6 = Quit
+        5 = Load Demo Data
+        6 = Help
+        7 = Quit
         
         """)
 
@@ -37,7 +37,7 @@ def main_menu():
             pass
 
         if selection == 1:
-            add_project(new_project_manager, new_dataframe)
+            add_project(new_project_manager)
             # REFACTORED OUT TO A FUNCTION IN A UICONTROLLER MODULE
             # new_project = Project()
             # add_project = new_project.create_project()
@@ -46,17 +46,19 @@ def main_menu():
             # print("project added to project manager..")
 
         elif selection == 2:
-            print("remove_record()")
+            new_project_manager.remove_row()
         elif selection == 3:
             print("update_record()")
         elif selection == 4:
-            display_projects(new_project_manager, new_dataframe)
+            display_projects(new_project_manager)
             # REFACTORED OUT TO A FUNCTION IN A UICONTROLLER MODULE
             # for i in new_project_manager.projects:
             #     print(i)
         elif selection == 5:
-            help()
+            new_project_manager.load_demo_data()
         elif selection == 6:
+            help()
+        elif selection == 7:
             selection = quit_app()
         else:
             print("Invalid selection")
