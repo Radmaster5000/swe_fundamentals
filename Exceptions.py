@@ -23,6 +23,9 @@ class ProjectManagerError(Exception):
 
 
 
+
+
+
 class ProjectDescriptionError(ProjectError):
     pass
 

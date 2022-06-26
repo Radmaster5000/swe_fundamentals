@@ -48,7 +48,7 @@ def main_menu():
         elif selection == 2:
             new_project_manager.remove_row()
         elif selection == 3:
-            print("update_record()")
+            new_project_manager.update_record()
         elif selection == 4:
             display_projects(new_project_manager)
             # REFACTORED OUT TO A FUNCTION IN A UICONTROLLER MODULE
