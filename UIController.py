@@ -1,10 +1,13 @@
 from Project import create_project
-from ProjectManager import ProjectManager
-import ProjectManager
 
 
 def add_project(project_manager):
+    """
+    Create a new Project object, then add it to the Project Manager DataFrame
 
+    Args:
+        project_manager (Project Manager object): The active DataFrame within the application
+    """
     _project = create_project()
     print("project created..")
     project_manager.add_to_dataframe(_project)
@@ -12,32 +15,29 @@ def add_project(project_manager):
 
 
 def display_projects(project_manager):
+    """
+    Print the Project Manager DataFrame to the terminal
+
+    Args:
+        project_manager (Project Manager object): The active DataFrame within the application
+    """
     if project_manager.projects.empty:
         print("No projects to display")
         return
-
     else:
         print(project_manager.projects)
-    # valid = False
-    # while not valid:
-    #     view = input("Please type '1' for an overview of projects, or '2' for full details: ")
-    #     if view == '1':
-    #         for i in project_manager.projects:
-    #             print(i)
-    #             valid = True
-    #     elif view == '2':
-    #         print(new_dataframe)
-    #         valid = True
-    #     else:
-    #         print("Invalid selection")
 
     return
 
 
-def quit_app():
+def quit_app(project_manager):
+    """
+    Saves the DataFrame and exits the application.
+    """
     confirm = input("Are you sure you want to quit?").lower()
     if confirm == 'y':
-        print("Save file?")
+        project_manager.projects.to_csv("project_manager.csv")
+        print("Project Manager saved")
         quit()
     else:
         return 0

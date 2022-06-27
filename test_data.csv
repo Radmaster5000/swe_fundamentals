@@ -1,3 +1,9 @@
 Name,Version,Description,Start Date,Last Modified,Languages Used,Contributors,Link
-Bravo,0.1,Test project one,2022-05-11,2022-05-11,[Python; BASH],[Radmaster5000],http://www.google.com
-Charlie,0.2,Test project two,2022-06-01,2022-06-02,[C],[Philbert],https://www.arm.com
+Alpha,1.0,Test project one,2021-01-01,2021-01-01,[C++; Python],[Phil],http://www.github.com
+Bravo,0.1,Test project two,2022-05-11,2022-05-11,[Python; BASH],[Radmaster5000],http://www.google.com
+Charlie,0.2,Test project three,2022-06-01,2022-06-02,[C],[Philbert],https://www.arm.com
+Delta,3.1,Test project four,2022-12-31,2023-01-01,[JavaScript; Python],[Bill; Ted],http://www.wikipedia.com
+Echo,4.4,Test project five,2020-03-01,2022-03-01,[Java],[Homer; Marge],http://www.microsoft.com
+Foxtrot,5.3,Test project six,2018-01-05,2021-03-20,[Machine],[Zack; Soph],https://www.facebook.com
+Golf,60.2,Test project seven,1999-12-31,2000-01-01,[C#],[Rick; Morty],https://www.rickandmorty.com
+Hotel,11.7,Test project eight,1985-09-13,2022-06-28,[Python; C],[Master Chief],https://www.halo.com

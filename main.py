@@ -1,21 +1,18 @@
 from ProjectManager import ProjectManager
-from Project import Project
 from UIController import add_project, display_projects, quit_app
 
+from Help import info
 
-
-from Exceptions import *
-from Help import help
-# # Load data
-# test_dataframe = pd.read_csv('test_data.csv')
-# print(test_dataframe)
-
-
-# Setup
+# Initial setup of DataFrame
 new_project_manager = ProjectManager()
 
-# Launch UI
+
 def main_menu():
+    """
+    The entry point of the application. Displays the available options to the user.
+    User returns to this screen until they select option 7 to quit.
+    Numbers used for selection to remove ambiguity of using alpha-characters being upper or lowercase.
+    """
     selection = 0
     while selection != 7:
         selection = input("""
@@ -44,7 +41,6 @@ def main_menu():
             # print("project created..")
             # new_project_manager.add(add_project)
             # print("project added to project manager..")
-
         elif selection == 2:
             new_project_manager.remove_row()
         elif selection == 3:
@@ -59,12 +55,9 @@ def main_menu():
         elif selection == 6:
             help()
         elif selection == 7:
-            selection = quit_app()
+            selection = quit_app(new_project_manager)
         else:
             print("Invalid selection")
-
-
-
 
 
 if __name__ == '__main__':

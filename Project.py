@@ -4,7 +4,12 @@ import re
 
 class Project:
     """
-    A class to create Project objects that contain all the required information
+    A class to create Project objects that contain all the required information.
+    Setters are used to validate the data being inputted. Custom errors are raised if data is invalid and the user is
+    prompted to retry.
+
+    Default values are given if the object is created without any inputs, however validation requires the user to
+    give inputs for all the fields.
     """
 
     def __init__(self, name='Example', version=0.0, description='Default description',
@@ -20,6 +25,9 @@ class Project:
         self.link = link
 
     def __str__(self):
+        """
+        Overview of projects (Used during development)
+        """
         return f"Project {self.name}, Version {self.version}, Description: {self.description}"
 
     @property
@@ -109,6 +117,13 @@ class Project:
 
 
 def create_project():
+    """
+    Takes input from the user, validating the data as it is inputted. A Project Object is then created using the
+    inputted data.
+
+    Returns:
+         new_project (Project Object): A completed Project Object that can be added to the Project Manager DataFrame
+    """
     _languages = []
     _contributors = []
     _lang = None
@@ -145,24 +160,27 @@ def create_project():
         _last_modified = input("\nPlease enter the Project's last modified date: ")
         attr = check_last_modified(_last_modified)
 
-
     while _lang != '':
         attr = False
         while not attr:
             print("\nPress Enter without entering a language to move on")
             _lang = input("Please enter a programming language used in the Project: ")
-
-            _languages.append(_lang)
-            attr = check_lang(_languages)
+            if _lang != '':
+                _languages.append(_lang)
+                attr = check_lang(_languages)
+            else:
+                attr = True
 
     while _cont != '':
         attr = False
         while not attr:
             print("\nPress Enter without entering a team member to move on")
             _cont = input("Please enter a team member who worked on the Project: ")
-
-            _contributors.append(_cont)
-            attr = check_cont(_contributors)
+            if _cont != '':
+                _contributors.append(_cont)
+                attr = check_cont(_contributors)
+            else:
+                attr = True
 
     attr = False
     while not attr:
@@ -176,8 +194,16 @@ def create_project():
     return new_project
 
 
-
 def check_name(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Name input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(name=attribute)
@@ -189,6 +215,15 @@ def check_name(attribute):
 
 
 def check_version(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Version input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(version=attribute)
@@ -200,6 +235,15 @@ def check_version(attribute):
 
 
 def check_description(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Description input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(description=attribute)
@@ -211,6 +255,15 @@ def check_description(attribute):
 
 
 def check_start_date(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Start Date input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(start_date=attribute)
@@ -222,6 +275,15 @@ def check_start_date(attribute):
 
 
 def check_last_modified(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Last Modified Date input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(last_modified=attribute)
@@ -233,6 +295,15 @@ def check_last_modified(attribute):
 
 
 def check_lang(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Programming Language input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(languages=attribute)
@@ -242,7 +313,17 @@ def check_lang(attribute):
     finally:
         return attr
 
+
 def check_cont(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Contributor input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(contributors=attribute)
@@ -252,7 +333,17 @@ def check_cont(attribute):
     finally:
         return attr
 
+
 def check_link(attribute):
+    """
+    Checks the validity of the given data
+
+    Args:
+        attribute (string): Hyperlink input from user
+
+    Returns:
+        attr (bool): True if given attribute is valid, False otherwise
+    """
     attr = True
     try:
         Project(link=attribute)
