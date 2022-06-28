@@ -8,6 +8,16 @@ This application has been created to log Projects used by the team and record in
 
 ## BASIC USAGE:
 
+There is a `requirements.txt` but the only non-standard library being used is Pandas
+
+Command to start the program:
+
+`
+python main.py
+`
+
+
+
 CREATE A NEW PROJECT
 Input the following fields; name, version, description, start date, last modified, languages, contributors, link to the repository
 
