@@ -26,4 +26,14 @@ def info():
     entry. Values should be separated by a comma.
 
     DISPLAY PROJECTS
-    (Print the Projects currently contained within the Project Manager""")
+    (Print the Projects currently contained within the Project Manager
+    
+    LOAD DATA
+    (load any csv file into the current Project Manager) 
+    Enter the name of the file without .csv suffix and make sure the .csv file is in the main directory.
+    
+    QUIT
+    Closing the application automatically saves the current Project Manager and all the contained Projects in 
+    CSV_Files/project_manager.csv
+    This will overwrite any previous project_manager.csv file""")
+
