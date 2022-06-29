@@ -36,7 +36,7 @@ def quit_app(project_manager):
     """
     confirm = input("Are you sure you want to quit?").lower()
     if confirm == 'y':
-        project_manager.projects.to_csv("project_manager.csv")
+        project_manager.projects.to_csv("CSV_Files/project_manager.csv", index=False)
         print("Project Manager saved")
         quit()
     else:

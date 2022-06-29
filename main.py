@@ -22,7 +22,7 @@ def main_menu():
         2 = Remove a project
         3 = Update a project
         4 = Display a project
-        5 = Load Demo Data
+        5 = Load Data
         6 = Help
         7 = Quit
         
@@ -51,7 +51,7 @@ def main_menu():
             # for i in new_project_manager.projects:
             #     print(i)
         elif selection == 5:
-            new_project_manager.load_demo_data()
+            new_project_manager.load_data()
         elif selection == 6:
             help()
         elif selection == 7:

@@ -37,22 +37,29 @@ class ProjectManager:
                                                          project.start_date, project.last_modified, project.languages,
                                                          project.contributors, project.link]
 
-    def load_demo_data(self):
+    def load_data(self):
         """
         Reads the data from the test_data file and writes it to the DataFrame.
         """
-        test_data = pd.read_csv('test_data.csv', index_col=False, quotechar="'")
-        self._projects = self._projects.append(test_data, ignore_index=True)
-        print("demo data loaded!")
+        file = input("Please enter the name of the file you wish to load (without csv extension), or type 'c' "
+                     "to cancel: ")
+        if not cancel(file):
+            try:
+                existing_data = pd.read_csv(f"CSV_Files/{file}.csv", index_col=False, quotechar="'")
+                self._projects = self._projects.append(existing_data, ignore_index=True)
+                print("data loaded!")
+            except FileNotFoundError:
+                print("Sorry, that file cannot be found")
 
     def remove_row(self):
         """
         Deletes the specified row from the DataFrame.
         """
         index = input("please choose an index, or type 'c' to cancel: ")
-        if index == 'c' or index == 'C':
-            print("returning to main menu")
-        else:
+        # THE BELOW WAS REFACTORED INTO THE cancel(choice) FUNCTION
+        # if index == 'c' or index == 'C':
+        #     print("returning to main menu")
+        if not cancel(index):
             self._projects = self._projects.drop(int(index))
             print("row removed")
 
@@ -61,9 +68,10 @@ class ProjectManager:
         Changes the data in the specified cell to the new input from the user.
         """
         index = input("please choose an index to update, or type 'c' to cancel: ")
-        if index == 'c' or index == 'C':
-            print("returning to main menu")
-        else:
+        # THE BELOW WAS REFACTORED INTO THE cancel(choice) FUNCTION
+        # if index == 'c' or index == 'C':
+        #     print("returning to main menu")
+        if not cancel(index):
             index = int(index)
             attr = input("please enter the attribute you would like to update: ")
             new_value = input("please enter the new value of the attribute: ")
@@ -89,4 +97,9 @@ class ProjectManager:
                 print("sorry, invalid input")
 
 
-
+def cancel(choice):
+    if choice == 'c' or choice == 'C':
+        print("Returning to main menu")
+        return True
+    else:
+        return False
