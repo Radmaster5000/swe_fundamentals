@@ -3,6 +3,7 @@ import pandas as pd
 
 
 
+
 class ProjectManager:
     """
     Dataframe object to store all the projects as rows.
@@ -47,9 +48,21 @@ class ProjectManager:
             try:
                 existing_data = pd.read_csv(f"CSV_Files/{file}.csv", index_col=False, quotechar="'")
                 self._projects = self._projects.append(existing_data, ignore_index=True)
+                self._projects = change_to_commas(self._projects)
                 print("data loaded!")
             except FileNotFoundError:
                 print("Sorry, that file cannot be found")
+
+    def save_data(self):
+        """
+        Saves the data to a csv file.
+        """
+        file = input("What would you like to call the file? (without csv extension), or type 'c' "
+                     "to cancel: ")
+        if not cancel(file):
+            self._projects = change_from_commas(self._projects)
+            self._projects.to_csv(f"CSV_Files/{file}.csv", index=False)
+            print(f"File saved to: CSV_Files/{file}.csv")
 
     def remove_row(self):
         """
@@ -103,3 +116,39 @@ def cancel(choice):
         return True
     else:
         return False
+
+
+def change_to_commas(dataframe):
+    """
+    Changes all the ';' to ',' to give the impression of a list
+    Args:
+        dataframe: The DataFrame containing semi-colons
+
+    Returns:
+        dataframe: The DataFrame containing commas
+    """
+    for i in range(len(dataframe["Languages Used"])):
+        dataframe["Languages Used"][i] = dataframe["Languages Used"][i].replace(';', ',')
+
+    for i in range(len(dataframe["Contributors"])):
+        dataframe["Contributors"][i] = dataframe["Contributors"][i].replace(';', ',')
+
+    return dataframe
+
+
+def change_from_commas(dataframe):
+    """
+    Changes all the ',' to ';' to give the impression of a list
+    Args:
+        dataframe: The DataFrame containing commas
+
+    Returns:
+        dataframe: The DataFrame containing semi-colons
+    """
+    for i in range(len(dataframe["Languages Used"])):
+        dataframe["Languages Used"][i] = dataframe["Languages Used"][i].replace(',', ';')
+
+    for i in range(len(dataframe["Contributors"])):
+        dataframe["Contributors"][i] = dataframe["Contributors"][i].replace(',', ';')
+
+    return dataframe

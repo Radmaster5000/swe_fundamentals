@@ -1,4 +1,5 @@
 from Project import create_project
+from ProjectManager import ProjectManager
 
 
 def add_project(project_manager):
@@ -34,10 +35,15 @@ def quit_app(project_manager):
     """
     Saves the DataFrame and exits the application.
     """
+    save = input("Would you like to save the project manager?").lower()
+    if save == 'y':
+        ProjectManager.save_data(project_manager)
+
     confirm = input("Are you sure you want to quit?").lower()
     if confirm == 'y':
-        project_manager.projects.to_csv("CSV_Files/project_manager.csv", index=False)
-        print("Project Manager saved")
+
         quit()
     else:
         return 0
+
+

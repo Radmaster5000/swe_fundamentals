@@ -1,6 +1,6 @@
 
 
-def info():
+def ReadMe():
     """
     Displays information regarding purpose and usage of the application
     """

@@ -1,7 +1,6 @@
 from ProjectManager import ProjectManager
 from UIController import add_project, display_projects, quit_app
-
-from Help import info
+from ReadMe import ReadMe
 
 # Initial setup of DataFrame
 new_project_manager = ProjectManager()
@@ -21,9 +20,9 @@ def main_menu():
         1 = Create a project
         2 = Remove a project
         3 = Update a project
-        4 = Display a project
+        4 = Display projects
         5 = Load Data
-        6 = Help
+        6 = ReadMe
         7 = Quit
         
         """)
@@ -53,7 +52,7 @@ def main_menu():
         elif selection == 5:
             new_project_manager.load_data()
         elif selection == 6:
-            help()
+            ReadMe()
         elif selection == 7:
             selection = quit_app(new_project_manager)
         else:
