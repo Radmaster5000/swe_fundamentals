@@ -26,7 +26,7 @@ Delete a project that has been abandoned/no longer needs to be recorded
 
 UPDATE PROJECTS
 Edit an existing project
-PLEASE NOTE: When changing values for 'Languages Used' or 'Contributors', please enter all new values in one entry. Values should be separated by a comma. (I'm aware this changes the type from a list to a string and adding a comma would break it being read as a CSV again, but that's on the never ending TODO list)
+PLEASE NOTE: When changing values for 'Languages Used' or 'Contributors', please enter all new values in one entry. Values should be separated by a comma. (I'm aware this changes the type from a list to a string but without using something like MongoDB it's pretty difficult to implement a list that can change sizes using Pandas). TO GET AROUND THIS... When the app saves a file, it first replaces all the commas for semi-colons. When it reads a CSV, it changes all the semi-colons back into commas.
 
 DISPLAY PROJECTS
 Print the Projects currently contained within the Project Manager
