@@ -36,12 +36,11 @@ def quit_app(project_manager):
     Saves the DataFrame and exits the application.
     """
     save = input("Would you like to save the project manager?").lower()
-    if save == 'y':
+    if save == 'y' or save == 'yes':
         ProjectManager.save_data(project_manager)
 
-    confirm = input("Are you sure you want to quit?").lower()
-    if confirm == 'y':
-
+    confirm = input("\n\n\nAre you sure you want to quit?").lower()
+    if confirm == 'y' or confirm == 'yes':
         quit()
     else:
         return 0

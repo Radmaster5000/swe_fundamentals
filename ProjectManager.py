@@ -146,9 +146,14 @@ def change_from_commas(dataframe):
         dataframe: The DataFrame containing semi-colons
     """
     for i in range(len(dataframe["Languages Used"])):
+        if isinstance(dataframe["Languages Used"][i], list):
+            dataframe["Languages Used"][i] = str(dataframe["Languages Used"][i])
         dataframe["Languages Used"][i] = dataframe["Languages Used"][i].replace(',', ';')
 
     for i in range(len(dataframe["Contributors"])):
+        if isinstance(dataframe["Contributors"][i], list):
+            dataframe["Contributors"][i] = str(dataframe["Contributors"][i])
         dataframe["Contributors"][i] = dataframe["Contributors"][i].replace(',', ';')
 
     return dataframe
+
