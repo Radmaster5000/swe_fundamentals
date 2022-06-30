@@ -30,3 +30,11 @@ PLEASE NOTE: When changing values for 'Languages Used' or 'Contributors', please
 
 DISPLAY PROJECTS
 Print the Projects currently contained within the Project Manager
+
+
+LOAD DATA
+(load any csv file into the current Project Manager) 
+Enter the name of the file without .csv suffix and make sure the .csv file is in the CSV_Files directory.
+The CSV_Files folder contains two CSV files for demonstration purposes.
+test_data.csv is a standard dataset that can be imported without issue.
+corrupt_data.csv contains two rows that have multiple excess commas in. These rows will be ignored when the data is imported.

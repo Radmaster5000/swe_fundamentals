@@ -46,7 +46,7 @@ class ProjectManager:
                      "to cancel: ")
         if not cancel(file):
             try:
-                existing_data = pd.read_csv(f"CSV_Files/{file}.csv", index_col=False, quotechar="'")
+                existing_data = pd.read_csv(f"CSV_Files/{file}.csv", index_col=False, quotechar="'", error_bad_lines=False)
                 self._projects = self._projects.append(existing_data, ignore_index=True)
                 self._projects = change_to_commas(self._projects)
                 print("data loaded!")

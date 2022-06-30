@@ -30,10 +30,11 @@ def ReadMe():
     
     LOAD DATA
     (load any csv file into the current Project Manager) 
-    Enter the name of the file without .csv suffix and make sure the .csv file is in the main directory.
+    Enter the name of the file without .csv suffix and make sure the .csv file is in the CSV_Files directory.
     
     QUIT
-    The user is asked if they want to save the DataFrame to a CSV file. Choosing 'yes' prompts the user to enter
-    a name for the file. If the user does not save, any inputted information from the session will be lost.
+    The user is asked if they want to save the DataFrame to a CSV file in the CSV_Files directory. Choosing 'yes' 
+    prompts the user to enter a name for the file. If the user does not save, any inputted information from the session 
+    will be lost.
     """)
 

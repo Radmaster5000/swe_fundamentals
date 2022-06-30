@@ -1,6 +1,6 @@
 import unittest
-from swe_fundamentals.Exceptions import *
-from swe_fundamentals.Project import Project
+from Exceptions import *
+from Project import Project
 
 
 class ProjectTests(unittest.TestCase):
